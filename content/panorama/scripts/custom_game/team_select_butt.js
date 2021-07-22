@@ -333,17 +333,6 @@ GameEvents.Subscribe("kv_result", function(result) {
 	createKvPanel(il,result.default,result.custom,changeSubmitFunc);
 });
 
-(function unHideToolsModeButtons() {
-	if ($("#toolsModeGroup")) {
-		if (Game.IsInToolsMode()) {
-			$("#toolsModeGroup").visible = true;
-		}
-	} else {
-		//$.Msg("toolsModeGroup not found")
-		//$.Schedule( 0.1, unHideToolsModeButtons );
-	}
-})();
-
 function fixParsedTable(tabl) {
 	if ("object"!==typeof(tabl)) return tabl;
 	for (let k in tabl){

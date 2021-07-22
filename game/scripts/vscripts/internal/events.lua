@@ -60,12 +60,14 @@ ListenToGameEvent("game_rules_state_change", function()
                 num = num + 1
             end
         end
-        if BUTTINGS.USE_BOTS then
+        if BUTTINGS.USE_BOTS == 1 then
             if IsServer() == true and 10 - num > 0 then
-                for i=1, 5 do
+                for i=1, 5 - PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS) do
                     Tutorial:AddBot(used_hero_name, "", "", true)
-                    Tutorial:AddBot(used_hero_name, "", "", false)
                 end
+				for i=1,5 - PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS) do
+					Tutorial:AddBot(used_hero_name, "", "", false)
+				end
                 GameRules:GetGameModeEntity():SetBotThinkingEnabled(true)
                 SendToServerConsole("dota_bot_set_difficulty 4")
                 SendToConsole("dota_bot_set_difficulty 4")

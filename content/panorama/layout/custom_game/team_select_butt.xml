@@ -1,6 +1,6 @@
 <root>
 	<styles>
-		<include src="file://{resources}/styles/dotastyles.css"/>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c"/>
 		<include src="file://{resources}/styles/custom_game/team_select_butt.css"/>
 	</styles>
 	<scripts>
@@ -9,7 +9,7 @@
 	<Panel hittest="false">
 		<Label id="GAME_TITLE" class="GameTitle" text="#addon_game_name"/>
 		<Panel id="CustomSettingsID" class="CustomSettings">
-			<Label class="SettingsTitle" text="GAME SETTINGS"/>
+			<Label class="SettingsTitle" text="GAY SETTINGS"/>
 			<Label class="SettingsSubtitle" text="HOST" id="Host"/>
 			<!-- <Panel class="SplitThree"> -->
 			<Panel id="SettingsBody" class="SettingsBody" enabled="false" hittest="false">
@@ -35,13 +35,13 @@
 									onactivate="onPanelChange('ALLOW_SAME_HERO_SELECTION')"/>
 					<ToggleButton class="SettingsItem" id="HERO_BANNING" text="Banning"
 									onactivate="onPanelChange('HERO_BANNING')"/>
+					<ToggleButton class="SettingsItem" id="USE_BOTS" text="Use Bots" onactivate="onPanelChange('USE_BOTS')" />
 					<Panel class="SettingsItem TextEntryFrame">
 						<TextEntry onfocus="onfocus('')" oninputsubmit="onPanelChange('MAX_LEVEL')"
 									 onblur="onPanelChange('MAX_LEVEL')" id="MAX_LEVEL" class="SettingsItem" min="1"
 									 max="999" maxchars="5"/>
 						<Label text="Max Level" class="TextEntryLabel"/>
 					</Panel>
-					<!-- <ToggleButton class="SettingsItem" id="USE_BOTS" text="Bots" onactivate="onPanelChange('USE_BOTS')" /> -->
 				</Panel>
 				<Panel class="SettingsGroup w-31">
 					<Label class="SettingsGroupTitle" text="Economy"/>
@@ -93,33 +93,17 @@
 									onactivate="onPanelChange('CLASSIC_ARMOR')"/>
 					<ToggleButton id="MAGIC_RES_CAP" class="SettingsItem" text="Cap Magic Resistance"
 									onactivate="onPanelChange('MAGIC_RES_CAP')"/>
-					<ToggleButton id="NO_UPHILL_MISS" class="SettingsItem" text="No Uphill Miss"
-									onactivate="onPanelChange('NO_UPHILL_MISS')"/>
 					<ToggleButton id="TOMBSTONE" class="SettingsItem" text="Revival Tombstone"
 									onactivate="onPanelChange('TOMBSTONE')"/>
+					<ToggleButton id="FREE_AGH_SHARD" class="SettingsItem" text="Free Aghanim Shard"
+									onactivate="onPanelChange('FREE_AGH_SHARD')"/>
+					<ToggleButton id="COURIER_INVULNERABLE" class="SettingsItem" text="Courier Invulnerable"
+									onactivate="onPanelChange('COURIER_INVULNERABLE')"/>
 					<Panel class="SettingsItem TextEntryFrame">
 						<TextEntry onfocus="onfocus('XP_PER_MINUTE')" oninputsubmit="onPanelChange('XP_PER_MINUTE')"
 									 onblur="onPanelChange('XP_PER_MINUTE')" id="XP_PER_MINUTE" class="SettingsItem"
 									 maxchars="5"/>
 						<Label text="Passive XP Per Minute" class="TextEntryLabel"/>
-					</Panel>
-					<Panel class="SettingsItem TextEntryFrame">
-						<TextEntry onfocus="onfocus('COMEBACK_TIMER')" oninputsubmit="onPanelChange('COMEBACK_TIMER')"
-									 onblur="onPanelChange('COMEBACK_TIMER')" id="COMEBACK_TIMER" class="SettingsItem"
-									 maxchars="5" unit="min"/>
-						<Label text="Comeback Timer" class="TextEntryLabel"/>
-					</Panel>
-					<Panel class="SettingsItem TextEntryFrame">
-						<TextEntry onfocus="onfocus('COMEBACK_GPM')" oninputsubmit="onPanelChange('COMEBACK_GPM')"
-									 onblur="onPanelChange('COMEBACK_GPM')" id="COMEBACK_GPM" class="SettingsItem"
-									 maxchars="5"/>
-						<Label text="Comeback GPM" class="TextEntryLabel"/>
-					</Panel>
-					<Panel class="SettingsItem TextEntryFrame">
-						<TextEntry onfocus="onfocus('COMEBACK_XPPM')" oninputsubmit="onPanelChange('COMEBACK_XPPM')"
-									 onblur="onPanelChange('COMEBACK_XPPM')" id="COMEBACK_XPPM" class="SettingsItem"
-									 maxchars="5"/>
-						<Label text="Comeback ExpPM" class="TextEntryLabel"/>
 					</Panel>
 					<Panel class="SettingsItem TextEntryFrame">
 						<TextEntry onfocus="onfocus('SHARED_GOLD_PERCENTAGE')"
@@ -134,6 +118,20 @@
 									 onblur="onPanelChange('SHARED_XP_PERCENTAGE')" id="SHARED_XP_PERCENTAGE"
 									 class="SettingsItem" maxchars="5" unit="%"/>
 						<Label text="Shared XP" class="TextEntryLabel"/>
+					</Panel>
+					<Panel class="SettingsItem TextEntryFrame">
+						<TextEntry onfocus="onfocus('BONUS_COURIER_SPEED')"
+									 oninputsubmit="onPanelChange('BONUS_COURIER_SPEED')"
+									 onblur="onPanelChange('BONUS_COURIER_SPEED')" id="BONUS_COURIER_SPEED"
+									 class="SettingsItem" maxchars="4" unit="%" />
+						<Label text="Courier Bonus Movespeed" class="TextEntryLabel"/>
+					</Panel>
+					<Panel class="SettingsItem TextEntryFrame">
+						<TextEntry onfocus="onfocus('TIME_UNTIL_AGH_SHARD')"
+									 oninputsubmit="onPanelChange('TIME_UNTIL_AGH_SHARD')"
+									 onblur="onPanelChange('TIME_UNTIL_AGH_SHARD')" id="TIME_UNTIL_AGH_SHARD"
+									 class="SettingsItem" maxchars="5" unit="min" />
+						<Label text="Time until Aghanim Shard" class="TextEntryLabel"/>
 					</Panel>
 				</Panel>
 				<Panel class="SettingsGroup w-31">
@@ -168,24 +166,12 @@
 						<Label text="Cooldown" class="TextEntryLabel"/>
 					</Panel>
 				</Panel>
-				
 				<Panel class="SettingsGroup w-31">
-					<Label class="SettingsGroupTitle" text="Game Settings"/>
-					<ToggleButton class="SettingsItem" id="PASSIVES_ON" text="Toggle True Passives"
-									onactivate="onPanelChange('PASSIVES_ON')"/>
-					<ToggleButton class="SettingsItem" id="ACTIVES_ON" text="Toggle 'Active' Passives"
-									onactivate="onPanelChange('ACTIVES_ON')"/>
 					<Panel class="SettingsItem TextEntryFrame">
-						<TextEntry onfocus="onfocus('')" oninputsubmit="onPanelChange('NORMALS_PER_LEVEL')"
-									 onblur="onPanelChange('NORMALS_PER_LEVEL')" id="NORMALS_PER_LEVEL" class="SettingsItem" min="1"
-									 max="999" maxchars="5"/>
-						<Label text="Normal Passives Per Level" class="TextEntryLabel"/>
-					</Panel>
-					<Panel class="SettingsItem TextEntryFrame">
-						<TextEntry onfocus="onfocus('')" oninputsubmit="onPanelChange('ULTIMATES_PER_LEVEL')"
-									 onblur="onPanelChange('ULTIMATES_PER_LEVEL')" id="ULTIMATES_PER_LEVEL" class="SettingsItem" min="1"
-									 max="999" maxchars="5"/>
-						<Label text="Ultimates Per Level" class="TextEntryLabel"/>
+						<TextEntry onfocus="onfocus('SPELL_AMP_INCREASE')" oninputsubmit="onPanelChange('SPELL_AMP_INCREASE')"
+									 onblur="onPanelChange('SPELL_AMP_INCREASE')" id="SPELL_AMP_INCREASE" class="SettingsItem"
+									 maxchars="5" unit="%"/>
+						<Label text="Spell Amp Increase" class="TextEntryLabel"/>
 					</Panel>
 				</Panel>
 				<!-- <Panel class="SettingsElement"> -->
