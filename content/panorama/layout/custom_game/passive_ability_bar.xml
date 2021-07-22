@@ -1,0 +1,48 @@
+<root>
+    <styles>
+        <include src="file://{resources}/styles/custom_game/passive_ability_bar.css" />
+    </styles>
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/util.js" />
+        <include src="file://{resources}/scripts/custom_game/passive_ability_bar.js" />
+    </scripts>
+    <snippets>
+        <snippet name = "MakeBar">
+			<Panel class = "PassiveAbilityBar">
+                <!-- Insert Abilities Here-->
+            </Panel>
+		</snippet>
+
+        <snippet name = "StorePassive">
+			<Panel class="PassiveAbilityBarAbilityContainer">
+                <DOTAAbilityImage id="AbilityBarVisual" abilityname="sven_gods_strength" />
+            </Panel>
+		</snippet>
+
+    </snippets>
+    <Panel class="PassiveAbilityBarRoot" hittest="false">
+        <Panel id="PassiveAbilityBarContainer">
+            <!--
+            <Panel class = "PassiveAbilityBar">
+                <Panel class="PassiveAbilityBarAbilityContainer">
+                    <DOTAAbilityImage id="AbilityBarVisual" abilityname="sven_gods_strength" />
+                </Panel>
+                <Panel class="PassiveAbilityBarAbilityContainer">
+                    <DOTAAbilityImage id="AbilityBarVisual" abilityname="zuus_static_field" />
+                </Panel>
+            </Panel>
+            <Panel class = "PassiveAbilityBar">
+
+                <Panel class="PassiveAbilityBarAbilityContainer">
+                    <DOTAAbilityImage id="AbilityBarVisual" abilityname="sven_warcry" />
+                </Panel>
+                <Panel class="PassiveAbilityBarAbilityContainer">
+                    <DOTAAbilityImage id="AbilityBarVisual" abilityname="abaddon_borrowed_time" />
+                </Panel>
+            </Panel>
+            -->
+        </Panel>
+
+        
+    </Panel>
+</root>

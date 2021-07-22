@@ -1,0 +1,48 @@
+.PassiveAbilityNoticeRoot
+{
+    width: 100%;
+    height: 100%;
+}
+
+.PassiveAbilityNoticeSection
+{
+    vertical-align: top;
+    horizontal-align: middle;
+    margin-top: 625px;
+    
+    width: 100%;
+    flow-children: down;
+}
+
+
+#PassiveAbilityNoticeTitle
+{
+    horizontal-align: middle;
+    opacity: 0;
+}
+#PassiveAbilityNoticeText
+{
+    horizontal-align: middle;
+    vertical-align: middle;
+
+    color: white;
+    font-size: 36;
+}
+
+
+#PassiveAbilityNoticeBar
+{
+    horizontal-align: middle;
+    flow-children: right;
+}
+.PassiveAbilityNoticeAbilityContainer
+{
+    /*background-color: #0000007a;*/
+    width: 120px;
+    height: 100px;
+    opacity: 0;
+}
+#AbilityVisual
+{
+    horizontal-align: middle;
+}

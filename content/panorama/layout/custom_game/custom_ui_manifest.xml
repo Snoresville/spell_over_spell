@@ -1,0 +1,72 @@
+<root>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/util.js" />
+	</scripts>
+	<script>
+		// Credits: EarthSalamander #42
+		// Hide vanilla pick screen in loading screen
+		HidePickScreen()
+		TitleFuckery()
+		MapThink()
+
+		function HidePickScreen() {
+			if (!Game.GameStateIs(3)) {
+				FindDotaHudElement("PreGame").style.opacity = "0";
+				$.Schedule(1.0, HidePickScreen)
+			}
+			else {
+				FindDotaHudElement("PreGame").style.opacity = "1";
+			}
+		}
+
+		function TitleFuckery(){
+			if (Game.GetState() < DOTA_GameState.DOTA_GAMERULES_STATE_HERO_SELECTION){
+				let gamemodetitle = FindDotaHudElement("GameModeNameLabel")
+				let symbols = "!@#$%^&*?"
+
+				if(gamemodetitle){
+					let newtext = ""
+					for(let i = 0; i < 15; i++){
+						newtext += symbols.charAt(Math.floor(Math.random() * symbols.length))
+					}
+					gamemodetitle.text = newtext
+				}
+				$.Schedule(0.1, TitleFuckery)
+			}
+		}
+		function MapThink(){
+			let mapname = FindDotaHudElement("MapInfoLabel")
+			if(mapname){
+				mapname.text = "MAP: WHO EVEN CARES ABOUT THE NAME OF THE MAP"
+			}
+			else{
+				$.Schedule(1.0, MapThink)
+			}
+		}
+		
+		GameEvents.Subscribe('dota_hud_error_message_player', (data)=>{
+			GameEvents.SendEventClientSide("dota_hud_error_message", {
+				splitscreenplayer: 0,
+				reason: 80,
+				message: data.message});
+		});
+		
+		// Fixes the top bar scores
+		GameEvents.Subscribe('scoreboard_fix', (data)=>{
+			FindDotaHudElement("TopBarRadiantScore").text = data.radiantKills;
+			FindDotaHudElement("TopBarDireScore").text = data.direKills;
+		});
+		
+	</script>
+	<Panel>
+		<CustomUIElement type="Hud"			layoutfile="file://{resources}/layout/custom_game/courier_fix.xml" />
+		<CustomUIElement type="Hud"			layoutfile="file://{resources}/layout/custom_game/passive_ability_notice.xml" />
+		<CustomUIElement type="Hud"			layoutfile="file://{resources}/layout/custom_game/passive_ability_bar.xml" />
+		<CustomUIElement type="Hud"			layoutfile="file://{resources}/layout/custom_game/ancient_alert.xml" />
+		<!--<CustomUIElement type="Hud"			layoutfile="file://{resources}/layout/custom_game/explosion.xml" />-->
+		<CustomUIElement type="GameSetup"	layoutfile="file://{resources}/layout/custom_game/team_select.xml" />
+		<CustomUIElement type="GameSetup"	layoutfile="file://{resources}/layout/custom_game/team_select_butt.xml" />
+		<CustomUIElement type="GameInfo"	layoutfile="file://{resources}/layout/custom_game/game_info.xml" />
+		<CustomUIElement type="EndScreen"	layoutfile="file://{resources}/layout/custom_game/multiteam_end_screen.xml" />
+	</Panel>
+</root>

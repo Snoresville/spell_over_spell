@@ -1,0 +1,45 @@
+<root>
+    <styles>
+        <include src="file://{resources}/styles/custom_game/passive_ability_notice.css" />
+    </styles>
+   
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/util.js" />
+        <include src="file://{resources}/scripts/custom_game/panel_animation.js" />
+        <include src="file://{resources}/scripts/custom_game/passive_ability_notice.js" />
+    </scripts>
+
+    <snippets>
+        <snippet name = "NewPassive">
+		
+			<Panel class="PassiveAbilityNoticeAbilityContainer">
+                <DOTAAbilityImage id="AbilityVisual" abilityname="sven_gods_strength" />
+            </Panel>
+			
+		</snippet>
+    </snippets>
+    
+    <Panel class="PassiveAbilityNoticeRoot" hittest="false">
+        <Panel class="PassiveAbilityNoticeSection">
+            
+            <Panel id="PassiveAbilityNoticeTitle">
+                <Label id="PassiveAbilityNoticeText" text = "You have gained the following passives"></Label>
+            </Panel>
+
+            <Panel id="PassiveAbilityNoticeBar">
+                <!--
+                <Panel class="PassiveAbilityNoticeAbilityContainer">
+                    <DOTAAbilityImage id="AbilityVisual" abilityname="witch_doctor_voodoo_restoration" />
+                </Panel>
+                <Panel class="PassiveAbilityNoticeAbilityContainer">
+                    <DOTAAbilityImage id="AbilityVisual" abilityname="sven_warcry" />
+                </Panel>
+                <Panel class="PassiveAbilityNoticeAbilityContainer">
+                    <DOTAAbilityImage id="AbilityVisual" abilityname="sven_gods_strength" />
+                </Panel>
+                -->
+            </Panel>
+            
+        </Panel>
+    </Panel>
+</root>
